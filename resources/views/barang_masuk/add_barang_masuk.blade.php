@@ -31,9 +31,12 @@
                 <div class="form-group col-8">
                     <label>Nama Barang</label>
                     <select class="form-select" name="merk_barang" id="merk_barang">
-                        @foreach ($merkBarang as $item)
-                            <option value="{!! $item !!}">{!! $item !!}</option>
-                        @endforeach
+                        <option>--- PILIH BARANG ---</option>
+                        @forelse($products as $item)
+                            <option value="{{ $item->merk_barang }}" data-harga="{{ $item->harga_beli }}">{!! $item->merk_barang !!}</option>
+                        @empty
+                            <option>Stok barang belum tersedia</option>
+                        @endforelse
                     </select>
                 </div>
                 {{-- <div class="form-group col-8">
@@ -64,7 +67,7 @@
                     <label>Harga Beli</label>
                     <input type="number" name="harga_satuan" min="0"
                         class="form-control @error('harga_satuan') is-invalid @enderror" id="harga_satuan"
-                        placeholder="Harga Satuan" value="{{ old('harga_satuan') }}">
+                        placeholder="Harga Satuan" value="{{ old('harga_satuan') }}" readonly>
                     @error('harga_satuan')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -97,7 +100,20 @@
     </div>
 
     <script>
-        $('#harga_satuan').on('keyup', function(e) {
+        $(document).ready(function() {
+            $('#merk_barang').change(function() {
+                // Ambil opsi yang dipilih
+                var selectedOption = $(this).find('option:selected');
+
+                // Ambil atribut custom dengan jQuery
+                var harga = selectedOption.data('harga');
+
+                // Isi input harga dan deskripsi
+                $('#harga_satuan').val(harga);
+            });
+        });
+
+        $('#jumlah_barang').on('keyup', function(e) {
             var code = e.keyCode || e.which
             var jumlah = $('#jumlah_barang').val()
             var harga = $('#harga_satuan').val()

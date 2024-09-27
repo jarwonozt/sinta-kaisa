@@ -34,7 +34,7 @@ class ProductsInController extends Controller
     {
         // dd(auth()->user()->username);
         $suppliers = Supplier::all();
-        $products = Product::orderBy('merk_barang', 'asc')->get();
+        $products = Product::orderBy('merk_barang', 'desc')->get();
         $merkBarang = $products->pluck('merk_barang')->unique();
         return view('barang_masuk.add_barang_masuk', compact('products', 'suppliers', 'merkBarang'));
     }

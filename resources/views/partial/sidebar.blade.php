@@ -4,7 +4,7 @@
             <div class="sidebar-header">
                 <div class="d-flex justify-content-center">
                     <div class="logo mx-2 fs-3 text-center d-flex flex-column">
-                          <img src="/img/logo.png" alt="" style="width: 70px; height: 70px">
+                          <img src="/img/kaisa-trans.png" alt="" style="width: 120px; height: 70px">
                         <a href="/"> </a>
                     </div>
                     <div class="toggler">
