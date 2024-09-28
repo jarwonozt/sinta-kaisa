@@ -48,10 +48,7 @@
                 </div>
                 <div class="form-group col-8">
                     <label>Keterangan</label>
-                    <select class="form-select" name="keterangan" id="keterangan">
-                        <option value="terjual">Terjual</option>
-                        <option value="kedaluwarsa">Kedaluwarsa</option>
-                    </select>
+                    <textarea class="form-control" name="keterangan" id="keterangan" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-success mt-3">Submit</button>
             </form>

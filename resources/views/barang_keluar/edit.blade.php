@@ -56,15 +56,8 @@
                     @enderror
                 </div>
                 <div class="form-group col-8">
-                    <label>Harga Satuan</label>
-                    <input type="number" min="0" name="harga_satuan"
-                        class="form-control @error('harga_satuan') is-invalid @enderror" id="harga_satuan"
-                        placeholder="Harga Satuan" value="{{ $product->harga_satuan }}">
-                    @error('harga_satuan')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                    <label>Keterangan</label>
+                    <textarea class="form-control" name="keterangan" id="keterangan" rows="3">{{ $product->keterangan }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-success mt-3">Submit</button>
             </form>

@@ -85,8 +85,7 @@
                                             {{-- <td>{{ $product->ukuran }}</td> --}}
                                             <td>{{ $product->jumlah_barang }}</td>
                                             <td class="badges">
-                                                <span
-                                                    class="badge {{ $product->keterangan == 'terjual' ? 'bg-success' : 'bg-warning' }}">{{ $product->keterangan }}</span>
+                                                <span>{{ $product->keterangan }}</span>
                                             </td>
                                             <td>Rp. {{ number_format($product->harga_satuan, 0, '.', '.') }}</td>
                                             <td>Rp. {{ number_format($product->total_harga, 0, '.', '.') }}</td>

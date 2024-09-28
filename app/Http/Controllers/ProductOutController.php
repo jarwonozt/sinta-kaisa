@@ -121,14 +121,16 @@ class ProductOutController extends Controller
     {
         $validatedData = $request->validate([
             'jumlah_barang' => 'required|integer',
-            'harga_satuan' => 'required|integer',
+            // 'harga_satuan' => 'required|integer',
             'tanggal_keluar' => 'required|date',
+            'keterangan' => 'required',
             // 'ukuran' => 'nullable',
         ]);
 
-        $validatedData['total_harga'] = $validatedData['harga_satuan'] * $validatedData['jumlah_barang'];
         $getBarang = Product::where('merk_barang', $request->merk_barang)->first();
-            // ->where('ukuran', $request->ukuran)->first();
+        $validatedData['total_harga'] = $getBarang->harga_jual * $validatedData['jumlah_barang'];
+
+        // ->where('ukuran', $request->ukuran)->first();
         $stokVal = $getBarang->stok;
 
         $stokBKLama = ProductOut::where('id', $id)->first();
