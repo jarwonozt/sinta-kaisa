@@ -57,14 +57,14 @@ class ProductOutController extends Controller
             // ->where('ukuran', $request->ukuran)->first();
 
         $validatedData['kode_pegawai'] = auth()->user()->kode_pegawai;
-        if ($request->keterangan == 'terjual') {
-            $validatedData['harga_satuan'] = $getBarang->harga_jual;
-            $validatedData['total_harga'] = $request->jumlah_barang * $getBarang->harga_jual;
-        } else {
-            $validatedData['harga_satuan'] = $getBarang->harga_jual;
-            $validatedData['total_harga'] = $request->jumlah_barang * $getBarang->harga_jual;
-            $validatedData['total_harga'] = -abs($validatedData['total_harga']);
-        }
+        $validatedData['harga_satuan'] = $getBarang->harga_jual;
+        $validatedData['total_harga'] = $request->jumlah_barang * $getBarang->harga_jual;
+        // if ($request->keterangan == 'terjual') {
+        // } else {
+        //     $validatedData['harga_satuan'] = $getBarang->harga_jual;
+        //     $validatedData['total_harga'] = $request->jumlah_barang * $getBarang->harga_jual;
+        //     $validatedData['total_harga'] = -abs($validatedData['total_harga']);
+        // }
 
         if ($validatedData) {
             if ($getBarang->stok >= $request->jumlah_barang) {
